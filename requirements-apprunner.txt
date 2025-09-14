@@ -1,17 +1,8 @@
-# Dependencies for AWS App Runner (Python 3.11)
-# Pinning to stable, compatible versions for reliable builds.
-
-# Web app
+# Dependencies for AWS App Runner
 streamlit==1.35.0
-
-# ML framework (CPU)
 tensorflow==2.16.1
-
-# Scientific stack aligned with TF 2.16
 numpy==1.26.4
 scipy==1.11.4
 matplotlib==3.8.4
 Pillow==10.3.0
-
-# Headless OpenCV for server environments
 opencv-python-headless==4.9.0.80
