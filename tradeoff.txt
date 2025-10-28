@@ -1,0 +1,80 @@
+#############################################
+# Model Performance Trade-offs Explained
+#############################################
+
+Hello! This document explains the results from our two recent model training runs. 
+Each model developed a different "personality" for detecting forgeries, and understanding this difference is key to improving the project.
+
+---
+### The Two Models: Our Digital Detectives
+---
+
+Think of your two models as two different detectives assigned to the same case.
+
+**1. Model V1: The Eager Detective**
+This was your first model after we increased the training data.
+
+* **Key Trait:** High Recall (68%), Low Precision (56%).
+* **Behavior:** This detective is eager to catch every possible suspect. 
+It successfully finds most of the culprits (it catches 68% of all forgeries). 
+However, in its eagerness, it also accuses a lot of innocent people (nearly half its accusations are wrong).
+* **In Practice:** This model is good at *finding* forgeries but creates a lot of "false alarms."
+
+**2. Model V2: The Cautious Detective**
+This was your second model after we lowered the learning rate and adjusted the weights.
+
+* **Key Trait:** High Precision (65%), Low Recall (52%).
+* **Behavior:** This detective is very careful and methodical. 
+It will only make an accusation if it's very confident. 
+As a result, when it accuses a suspect, it's usually right (65% of its forgery flags are correct). 
+However, its cautious nature means it lets a lot of culprits slip away (it misses almost half of the forgeries).
+* **In Practice:** This model is more *reliable* when it flags a forgery, but it misses more of them.
+
+---
+### Understanding the Key Terms
+---
+
+**Precision: The "Quality" of Predictions**
+* **Question it answers:** When the model says it found a forgery, how often is it correct?
+* **Simple Analogy:** Imagine a smoke alarm. High precision means that when the alarm goes off, there is almost certainly a fire. 
+A low-precision alarm might go off every time you make toast.
+* **Your Model V2 has higher precision.**
+
+**Recall: The "Quantity" of Detections**
+* **Question it answers:** Of all the forgeries that actually exist, what percentage did the model find?
+* **Simple Analogy:** For the smoke alarm, high recall means it will detect every single real fire, big or small. 
+A low-recall alarm might miss a small, smoldering fire.
+* **Your Model V1 has higher recall.**
+
+---
+### The Trade-off: Why Can't We Just Have Both?
+---
+
+Increasing precision often lowers recall, and vice-versa.
+
+Think of it like setting a "confidence" threshold.
+
+* To get **High Recall**, you set the confidence bar low. The model flags anything that looks even slightly suspicious. 
+This means you catch more forgeries, but you also incorrectly flag more innocent, but unusual-looking, digits.
+* To get **High Precision**, you set the confidence bar high. The model only flags things it is absolutely sure about. 
+This means your flags are very trustworthy, but you miss all the borderline cases that don't meet the high bar.
+
+---
+### Your Next Decision: What is the Goal of Your App?
+---
+
+The "best" model depends on what you consider a bigger problem:
+
+* **Scenario A: A false alarm is not a big deal.**
+    If you want to find as many potential forgeries as possible for a human to review later, then a false alarm is acceptable. 
+    The most important thing is not to miss any.
+    * **In this case, aim for High Recall (like Model V1).**
+
+* **Scenario B: A false accusation is a big problem.**
+    If flagging a digit as a forgery automatically triggers a serious action, you want to be very sure before you do. 
+    Missing a few forgeries is better than making a wrong accusation.
+    * **In this case, aim for High Precision (like Model V2).**
+
+Your next step in tuning the model is to decide which of these scenarios is closer to your goal and 
+adjust the training parameters (like the `loss_weight`) to find the perfect "sweet spot"
+ between the Eager Detective and the Cautious Detective.

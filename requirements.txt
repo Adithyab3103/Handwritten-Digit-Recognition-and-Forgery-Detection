@@ -1,7 +1,13 @@
-numpy>=1.19.5
-opencv-python>=4.5.1
-tensorflow>=2.6.0
-matplotlib>=3.3.4
-streamlit>=1.2.0
-Pillow>=8.3.1
-scipy>=1.5.4
+# Core dependencies
+streamlit==1.49.1
+tensorflow==2.16.2
+numpy==1.26.4
+pandas==2.3.2
+matplotlib==3.10.6
+scikit-learn==1.7.2
+scipy==1.11.4
+opencv-python-headless==4.7.0.72
+pillow==10.4.0
+plotly==6.3.0
+protobuf==4.25.8
+h5py
