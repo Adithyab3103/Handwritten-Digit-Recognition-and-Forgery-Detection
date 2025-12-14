@@ -2,7 +2,7 @@
 
 An advanced deep learning system that not only recognizes handwritten digits but also detects potential forgeries with high accuracy. This project uses a custom Convolutional Neural Network (CNN) trained on the MNIST dataset with synthetic forgeries to identify both the digit and its authenticity.
 
-## ✨ Features
+## Features
 
 - **Digit Recognition**: Accurately identifies handwritten digits (0-9)
 - **Forgery Detection**: Detects potential forgeries with confidence scores
@@ -10,7 +10,7 @@ An advanced deep learning system that not only recognizes handwritten digits but
 - **Web Interface**: User-friendly Streamlit app for easy interaction
 - **Advanced Preprocessing**: Handles various image formats and conditions
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -36,7 +36,7 @@ An advanced deep learning system that not only recognizes handwritten digits but
    pip install -r requirements.txt
    ```
 
-## 🖥️ Usage
+## Usage
 
 ### Web Application
 
@@ -58,7 +58,7 @@ python train.py
 
 This will train a new model and save it as `enhanced_mnist_forgery.keras`.
 
-## 🧠 Model Architecture
+## Model Architecture
 
 The system uses a multi-output CNN with the following structure:
 
